@@ -15,5 +15,5 @@ def produce(data, topic):
     producer.send(
         topic,
         value=data,
-        key=data['member_id'].encode('utf-8')
+        key=data['email'].encode('utf-8')
     )

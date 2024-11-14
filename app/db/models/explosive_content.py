@@ -13,8 +13,10 @@ class ExplosiveContent(Base):
 
     id = Column(Integer, primary_key=True)
     sentence = Column(String, nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'))
 
-    message = relationship('Message', back_populates='suspicious_explosive_content')
+    user = relationship("User", back_populates="explosive_content")
+
 
     def __repr__(self):
-        return f"<SuspiciousExplosiveContent(id={self.id}, message_id={self.message_id})>"
+        return f"<ExplosiveContent(id={self.id}, message_id={self.message_id})>"

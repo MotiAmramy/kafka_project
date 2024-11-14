@@ -15,9 +15,9 @@ class Location(Base):
     longitude = Column(String(100), nullable=False)
     city = Column(String(100), nullable=False)
     country = Column(String(100), nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
 
-    user_id = Column(Integer, ForeignKey('users.id'))
     user = relationship('User', back_populates='location')
 
     def __repr__(self):
-        return f"<Location(id={self.id}, city={self.city}, country={self.country})>"
+        return f"<Location(id={self.id}, city={self.city}, country={self.country}, latitude={self.latitude}, longitude={self.longitude})>"

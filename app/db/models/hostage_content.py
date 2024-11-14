@@ -9,7 +9,10 @@ class HostageContent(Base):
 
     id = Column(Integer, primary_key=True)
     sentence = Column(String, nullable=False)
-    sentence = relationship('Message', back_populates='suspicious_hostage_content')
+    user_id = Column(Integer, ForeignKey('users.id'))
+
+    user = relationship("User", back_populates="hostage_content")
+
 
     def __repr__(self):
-        return f"<SuspiciousHostageContent(id={self.id}, message_id={self.message_id})>"
+        return f"<HostageContent(id={self.id}, sentence={self.sentence}, user_id={self.user_id})>"
