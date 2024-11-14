@@ -23,6 +23,9 @@ def insert_user(data):
         print(f"Error inserting user: {e}")
         return None
 
+
+
+
 def insert_location(data, user_id):
     try:
         with session_maker() as session:
@@ -40,6 +43,9 @@ def insert_location(data, user_id):
         session.rollback()
         print(f"Error inserting location for user {user_id}: {e}")
 
+
+
+
 def insert_device(data, user_id):
     try:
         with session_maker() as session:
@@ -56,6 +62,9 @@ def insert_device(data, user_id):
         session.rollback()
         print(f"Error inserting device for user {user_id}: {e}")
 
+
+
+
 def insert_explosive_content(sentence, user_id):
     try:
         with session_maker() as session:
@@ -69,6 +78,9 @@ def insert_explosive_content(sentence, user_id):
         session.rollback()
         print(f"Error inserting explosive content for user {user_id}: {e}")
 
+
+
+
 def insert_hostage_content(sentence, user_id):
     try:
         with session_maker() as session:
@@ -81,6 +93,9 @@ def insert_hostage_content(sentence, user_id):
     except SQLAlchemyError as e:
         session.rollback()
         print(f"Error inserting hostage content for user {user_id}: {e}")
+
+
+
 
 def process_sentences(sentences, user_id):
         try:
