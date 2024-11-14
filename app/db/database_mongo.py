@@ -7,6 +7,4 @@ load_dotenv(verbose=True)
 client = MongoClient(os.environ['MONGO_URI'])
 
 db = client[os.environ['MONGO_DB_NAME']]
-# members_collection = db['members_collection']
-# _collection = db['menu']
-# menu_collection = db['menu']
+messages_collection = db[os.environ['MONGO_COLLECTION_NAME_MESSAGE_ALL']]
