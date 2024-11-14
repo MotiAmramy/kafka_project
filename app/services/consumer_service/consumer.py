@@ -4,6 +4,7 @@ from kafka import KafkaConsumer
 import json
 import os
 
+from app.services.consumer_service.consumer_repository.consumer_repository_mongo import insert_message
 
 load_dotenv(verbose=True)
 
@@ -26,12 +27,18 @@ def consume_topic(topic: str, process_message_callback):
 
 
 def process_messages_all(value):
-    # insert_member(value)
+    insert_message(value)
     print(value)
 
-def process_class_registration_message(message):
 
-def process_equipment_audit_message(message):
+
+
+def process_hostage_message(message):
+
+
+
+def process_explosive_message(message):
+
 
 
 
