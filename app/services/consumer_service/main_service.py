@@ -22,7 +22,7 @@ def process_messages_all(value):
 
 
 
-def process_hostage_message(message):
+def process_suspicious_message(message):
     insert_data_from_consumer(message)
     print(message)
 

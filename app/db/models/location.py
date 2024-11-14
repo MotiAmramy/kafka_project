@@ -10,7 +10,7 @@ from app.db.models import Base
 class Location(Base):
     __tablename__ = 'locations'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     latitude = Column(String(100), nullable=False)
     longitude = Column(String(100), nullable=False)
     city = Column(String(100), nullable=False)

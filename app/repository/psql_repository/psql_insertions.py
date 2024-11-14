@@ -7,19 +7,16 @@ from app.db.models import ExplosiveContent, HostageContent, Device, User, Locati
 def insert_user(data):
     try:
         with session_maker() as session:
-            user = session.query(User).filter_by(email=data["email"]).first()
-
-            if not user:
-                user = User(
-                    email=data["email"],
-                    ip_address=data["ip_address"],
-                    username=data["username"],
-                    created_at=data["created_at"]
-                )
-                session.add(user)
-                session.commit()
-                session.refresh()
-
+            user = User(
+                email=data["email"],
+                ip_address=data["ip_address"],
+                username=data["username"],
+                created_at=data["created_at"]
+            )
+            session.add(user)
+            session.commit()
+            session.refresh(user)
+            print(user)
             return user
     except SQLAlchemyError as e:
         session.rollback()
@@ -39,7 +36,6 @@ def insert_location(data, user_id):
             )
             session.add(location)
             session.commit()
-            session.refresh()
     except SQLAlchemyError as e:
         session.rollback()
         print(f"Error inserting location for user {user_id}: {e}")
@@ -56,7 +52,6 @@ def insert_device(data, user_id):
             )
             session.add(device)
             session.commit()
-            session.refresh()
     except SQLAlchemyError as e:
         session.rollback()
         print(f"Error inserting device for user {user_id}: {e}")
@@ -70,7 +65,6 @@ def insert_explosive_content(sentence, user_id):
             )
             session.add(explosive_content)
             session.commit()
-            session.refresh()
     except SQLAlchemyError as e:
         session.rollback()
         print(f"Error inserting explosive content for user {user_id}: {e}")
@@ -84,7 +78,6 @@ def insert_hostage_content(sentence, user_id):
             )
             session.add(hostage_content)
             session.commit()
-            session.refresh()
     except SQLAlchemyError as e:
         session.rollback()
         print(f"Error inserting hostage content for user {user_id}: {e}")
