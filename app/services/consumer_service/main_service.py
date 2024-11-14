@@ -4,9 +4,7 @@ from app.repository.psql_repository.psql_insertions import insert_user, insert_l
 
 
 def insert_data_from_consumer(data):
-    print(data)
     user = insert_user(data)
-    print(user)
     insert_location(data, user.id)
     insert_device(data, user.id)
     process_sentences(data["sentences"], user.id)
@@ -24,7 +22,7 @@ def process_messages_all(value):
 
 def process_suspicious_message(message):
     insert_data_from_consumer(message)
-    print(message)
+
 
 
 

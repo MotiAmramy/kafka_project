@@ -21,9 +21,6 @@ def convert_user_model_to_json(user: User):
 
 
 
-
-
-
 def contains_suspicious_words(sentence):
     suspicious_keywords = ['hostage', 'explos', 'explosive']
     return any(keyword in sentence.lower() for keyword in suspicious_keywords)

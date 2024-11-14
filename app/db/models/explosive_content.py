@@ -19,4 +19,4 @@ class ExplosiveContent(Base):
 
 
     def __repr__(self):
-        return f"<ExplosiveContent(id={self.id}, message_id={self.message_id})>"
+        return f"<ExplosiveContent(id={self.id}, message={self.sentence})>"

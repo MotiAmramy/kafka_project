@@ -10,6 +10,11 @@ load_dotenv(verbose=True)
 app = Flask(__name__)
 
 
+
+
+
+
+
 def consume_topic(topics: list, process_message_callback):
     consumer = KafkaConsumer(
         *topics,
@@ -21,8 +26,9 @@ def consume_topic(topics: list, process_message_callback):
         process_message_callback(message)
 
 
+
+
 def topic_callback(message):
-    print(message)
     topic = message.topic
     print(topic)
     if topic == os.environ['KAFKA_TOPIC_MESSAGES_ALL']:
@@ -45,5 +51,6 @@ if __name__ == '__main__':
         os.environ['KAFKA_TOPIC_MESSAGES_HOSTAGE'],
         os.environ['KAFKA_TOPIC_MESSAGES_EXPLOSIVE']
     ]
+
     consume_topic(topics, topic_callback)
     app.run(debug=True)

@@ -16,7 +16,6 @@ def insert_user(data):
             session.add(user)
             session.commit()
             session.refresh(user)
-            print(user)
             return user
     except SQLAlchemyError as e:
         session.rollback()
@@ -99,11 +98,12 @@ def insert_hostage_content(sentence, user_id):
 
 def process_sentences(sentences, user_id):
         try:
-            if "explosive" in sentences[0].lower() or 'explos' in sentences[0].lower():
-               for sentence in sentences:
-                    insert_explosive_content(sentence, user_id)
-            elif "hostage" in sentences[0].lower():
+            first_sentence = sentences[0].lower()
+            if "explosive" in first_sentence or 'explos' in first_sentence:
                 for sentence in sentences:
-                    insert_hostage_content(sentence, user_id)
+                    insert_explosive_content(sentence=sentence,user_id=user_id)
+            elif "hostage" in first_sentence:
+                for sentence in sentences:
+                    insert_hostage_content(sentence=sentence, user_id=user_id)
         except Exception as e:
             print(f"Error processing sentence for user {user_id}: {e}")

@@ -1,6 +1,4 @@
-
 from flask import Blueprint, request, jsonify
-
 from app.services.producer_service.main_service import route_to_kafka_suspicious_sentences
 
 

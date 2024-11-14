@@ -7,6 +7,8 @@ from kafka.errors import TopicAlreadyExistsError
 
 load_dotenv(verbose=True)
 
+
+
 app = Flask(__name__)
 
 
