@@ -13,13 +13,12 @@ def get_user_by_email():
         return jsonify({"error": "Email parameter is required"}), 400
 
     try:
-        user_model = get_user_data_by_email(email)
-        user_data = convert_user_model_to_json(user_model)
+        return (get_user_data_by_email(email)
+                      .map(convert_user_model_to_json)
+                     .map(lambda user: (jsonify(user), 200))
+            .value_or(jsonify({"message": f"email {email} not found"}, 404))
+            )
 
-        if user_data is None:
-            return jsonify({"error": "User not found"}), 404
-
-        return jsonify(user_data), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500

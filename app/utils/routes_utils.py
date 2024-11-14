@@ -1,7 +1,11 @@
+from typing import Dict
+
+from returns.maybe import Maybe
+
 from app.db.models import User
 
 
-def convert_user_model_to_json(user: User):
+def convert_user_model_to_json(user: Maybe[User]) -> Dict[str, str]:
     user_data = {
         'id': user.id,
         'email': user.email,
