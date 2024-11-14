@@ -11,6 +11,9 @@ app.register_blueprint(blueprint=user_Blueprint, url_prefix="/api")
 app.register_blueprint(blueprint=common_word_Blueprint, url_prefix="/api")
 
 
+
+
+
 if __name__ == '__main__':
-    # init_db()
+    init_db()
     app.run(debug=True)

@@ -3,7 +3,7 @@ from flask import Flask
 from kafka import KafkaConsumer
 import json
 import os
-from app.services.consumer_service.main_service import process_messages_all, process_suspicious_message
+from app.services.consumer_service.consumer_service import process_messages_all, process_suspicious_message
 
 load_dotenv(verbose=True)
 
@@ -30,7 +30,6 @@ def consume_topic(topics: list, process_message_callback):
 
 def topic_callback(message):
     topic = message.topic
-    print(topic)
     if topic == os.environ['KAFKA_TOPIC_MESSAGES_ALL']:
         process_messages_all(message.value)
     elif topic == os.environ['KAFKA_TOPIC_MESSAGES_HOSTAGE']:

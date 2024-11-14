@@ -20,7 +20,7 @@ def insert_user(data):
     except SQLAlchemyError as e:
         session.rollback()
         print(f"Error inserting user: {e}")
-        return None
+
 
 
 

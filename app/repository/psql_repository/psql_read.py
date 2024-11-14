@@ -1,6 +1,4 @@
 from collections import Counter
-from multiprocessing.pool import MaybeEncodingError
-
 from returns.maybe import Maybe
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import joinedload
@@ -24,6 +22,7 @@ def get_user_data_by_email(email: str) -> Maybe[User]:
 
     except SQLAlchemyError as e:
         print(f"Error inserting user: {e}")
+
 
 
 

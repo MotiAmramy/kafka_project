@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app.repository.psql_repository.psql_read import get_user_data_by_email
-from app.utils.routes_utils import convert_user_model_to_json
+from app.utils.convert_model_to_json import convert_user_model_to_json
 
 user_Blueprint = Blueprint('user', __name__)
 
