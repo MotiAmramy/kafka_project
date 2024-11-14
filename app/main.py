@@ -1,5 +1,4 @@
 from flask import Flask
-
 from app.db.database_psql import init_db
 from routes.messages_controller import messages_Blueprint
 

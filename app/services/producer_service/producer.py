@@ -17,3 +17,4 @@ def produce(data, topic):
         value=data,
         key=data['email'].encode('utf-8')
     )
+    producer.flush()

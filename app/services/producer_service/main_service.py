@@ -25,13 +25,12 @@ def route_to_kafka_suspicious_sentences(json_data):
     if 'hostage' in ordered_sentences[0].lower():
         json_data['sentences'] = ordered_sentences
         print(f"Routing to Kafka topic 'messages.hostage': {ordered_sentences}")
-        produce(topic=os.environ['KAFKA_TOPIC_MESSAGES_HOSTAGE'], data=json_data)
+        produce(data=json_data, topic=os.environ['KAFKA_TOPIC_MESSAGES_HOSTAGE'])
     elif 'explos' in ordered_sentences[0].lower() or 'explosive' in ordered_sentences[0].lower():
         json_data['sentences'] = ordered_sentences
         print(f"Routing to Kafka topic 'messages.explosive': {ordered_sentences}")
-        produce(topic=os.environ['KAFKA_TOPIC_MESSAGES_EXPLOSIVE'], data=json_data)
-    else:
-        return
+        produce(data=json_data, topic=os.environ['KAFKA_TOPIC_MESSAGES_EXPLOSIVE'])
+
 
 
 
